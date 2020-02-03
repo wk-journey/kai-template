@@ -7,6 +7,7 @@ import org.springframework.context.annotation.ComponentScan;
 
 /**
  * @Author: Kai
+ * @DATE 2020-2-1
  */
 @ComponentScan(value = {"kai.template"})
 @MapperScan("kai.template.persist.mapper")
