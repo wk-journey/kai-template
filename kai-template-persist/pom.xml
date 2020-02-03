@@ -8,7 +8,6 @@
         <groupId>kai.template</groupId>
         <artifactId>kai-template</artifactId>
         <version>1.0.0-SNAPSHOT</version>
-        <relativePath>../pom.xml</relativePath>
     </parent>
 
     <artifactId>kai-template-persist</artifactId>
@@ -26,24 +25,4 @@
             <version>1.0</version>
         </dependency>
     </dependencies>
-
-<!--    <build>-->
-<!--        <resources>-->
-<!--            <resource>-->
-<!--                <directory>src/main/java</directory>-->
-<!--                <includes>-->
-<!--                    <include>**/*.xml</include>-->
-<!--                </includes>-->
-<!--            </resource>-->
-<!--            <resource>-->
-<!--                <directory>src/main/resources</directory>-->
-<!--                <includes>-->
-<!--                    <include>**.*</include>-->
-<!--                    <include>**/*.*</include>-->
-<!--                    <include>**/*/*.*</include>-->
-<!--                </includes>-->
-<!--            </resource>-->
-<!--        </resources>-->
-<!--    </build>-->
-
 </project>
