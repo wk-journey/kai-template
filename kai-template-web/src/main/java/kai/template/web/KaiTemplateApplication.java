@@ -6,6 +6,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.ComponentScan;
 
 /**
+ * Spring Boot 多数据源模板
  * @Author: Kai
  * @Date 2020-2-1
  */
