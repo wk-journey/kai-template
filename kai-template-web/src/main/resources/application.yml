@@ -1,3 +1,56 @@
 spring:
   profiles:
     active: dev
+
+kai-template:
+#  dataSource:
+#    # 使用druid数据源
+#    defaultDataSourceType: com.alibaba.druid.pool.DruidDataSource
+#    defaultDriverClassName: com.mysql.jdbc.Driver
+#    # 具体配置
+#    dataSourceItems:
+#      - master: true
+#        name: master
+#        url: jdbc:mysql://localhost:3306/demo?useUnicode=true&characterEncoding=UTF-8&allowMultiQueries=true&rewriterBatchedStatements=true
+#        username: root
+#        password: kwang950208
+#      - master: false
+#        name: slave
+#        url: jdbc:mysql://localhost:3306/demo?useUnicode=true&characterEncoding=UTF-8&allowMultiQueries=true&rewriterBatchedStatements=true
+#        username: root
+#        password: kwang950208
+
+#  mybatis:
+#    base-package: com.example.demo.persist.mapper
+#    type-aliases-package: com.example.demo.persist.entity
+#    identity: MYSQL
+#    mapper-locations: classpath*:mapper/**/*.xml
+#    check-config-location: false
+#    not-empty: false
+#    mappers: com.example.demo.mybatis.bean.IMapper
+#    config: mybatis-config.xml
+
+  redis:
+    default:
+      #password:
+      timeout: 50000
+      expire-seconds: 1800
+      pool-max-idle: 100
+      pool-max-total: 500
+      pool-max-wait-millis: 10000
+      pool-min-idle: 50
+      #单机配置
+      host: 127.0.0.1
+      port: 6379
+      #集群配置
+      #sentinel-master: redis01
+      #sentinel-nodes: 127.0.0.1:6379，127.0.0.2:6379
+
+#  mongodb:
+#    #username: root
+#    #password: 123456
+#    default-database: mydb
+#    connection-per-host: 100
+#    connection-timeout: 30000
+#    max-wait-time: 30000
+#    hosts: 10.168.158.250:27017,10.168.159.3:27017

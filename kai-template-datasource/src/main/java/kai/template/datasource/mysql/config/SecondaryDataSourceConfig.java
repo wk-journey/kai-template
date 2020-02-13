@@ -1,4 +1,4 @@
-package kai.template.datasource.config;
+package kai.template.datasource.mysql.config;
 
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.mybatis.spring.SqlSessionFactoryBean;

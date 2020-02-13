@@ -1,4 +1,4 @@
-package kai.template.datasource.config;
+package kai.template.datasource.mybatis.config;
 
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.Bean;
