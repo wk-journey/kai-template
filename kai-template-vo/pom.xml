@@ -11,4 +11,12 @@
 
     <artifactId>kai-template-vo</artifactId>
 
+    <dependencies>
+        <dependency>
+            <groupId>kai.template</groupId>
+            <artifactId>kai-template-utils</artifactId>
+            <version>${kai-template.version}</version>
+        </dependency>
+    </dependencies>
+
 </project>

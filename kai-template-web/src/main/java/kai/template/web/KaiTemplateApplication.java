@@ -10,8 +10,8 @@ import org.springframework.context.annotation.ComponentScan;
  * @Author: Kai
  * @Date 2020-2-1
  */
+//@MapperScan("kai.template.persist.mapper")
 @ComponentScan(value = {"kai.template"})
-@MapperScan("kai.template.persist.mapper")
 @SpringBootApplication
 public class KaiTemplateApplication {
     public static void main(String[] args) {

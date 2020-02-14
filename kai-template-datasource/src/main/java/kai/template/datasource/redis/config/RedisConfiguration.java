@@ -37,15 +37,17 @@ import java.util.List;
 @EnableAutoConfiguration
 public class RedisConfiguration {
 
-//    @Bean("defaultRedisProperties")
-//    public DefaultRedisProperties defaultRedisProperties() {
-//        return new DefaultRedisProperties();
-//    }
-//
-//    @Bean("slaveOneRedisProperties")
-//    public SlaveOneRedisProperties slaveOneRedisProperties() {
-//        return new SlaveOneRedisProperties();
-//    }
+    @Bean("defaultRedisProperties")
+    @ConditionalOnMissingBean
+    public DefaultRedisProperties defaultRedisProperties() {
+        return new DefaultRedisProperties();
+    }
+
+    @Bean("slaveOneRedisProperties")
+    @ConditionalOnMissingBean
+    public SlaveOneRedisProperties slaveOneRedisProperties() {
+        return new SlaveOneRedisProperties();
+    }
 
     @Primary
     @Bean(name = "redisService")
