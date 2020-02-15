@@ -38,7 +38,7 @@ public interface SystemService {
 
      boolean checkUserToken(String uid, String token) throws BusinessException;
 
-     boolean refreshTokenExpire(String uid);
+     boolean refreshTokenExpire(String uid) throws BusinessException;
 
      boolean disableToken(String uid);
 

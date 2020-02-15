@@ -5,6 +5,7 @@ import kai.template.exception.ApiError;
 import kai.template.service.constant.RedisKeys;
 import kai.template.service.exception.BusinessException;
 import kai.template.service.primary.system.SystemService;
+import kai.template.utils.exception.StackTraceLogUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -37,7 +38,13 @@ public class SystemServiceImpl implements SystemService {
 
     @Override
     public boolean isLogin(String uid, String token) {
-        return false;
+        try {
+            boolean flag = this.checkUserToken(uid, token) && this.refreshTokenExpire(uid);
+            return flag;
+        } catch (BusinessException e) {
+            LOGGER.error(StackTraceLogUtil.getStackTraceAsString(e));
+            return false;
+        }
     }
 
     @Override
@@ -73,10 +80,13 @@ public class SystemServiceImpl implements SystemService {
     }
 
     @Override
-    public boolean refreshTokenExpire(String uid) {
+    public boolean refreshTokenExpire(String uid) throws BusinessException {
         String key = String.format(RedisKeys.TOKEN_KEY, uid);
         Boolean flag = redisService.expire(key, RedisKeys.TOKEN_EXPIRE, TimeUnit.SECONDS);
-        return Optional.ofNullable(flag).isPresent() && flag;
+        if (Optional.ofNullable(flag).isPresent() && flag) {
+            return true;
+        }
+        throw new BusinessException(ApiError.REDIS_EXPIRE_FAIL);
     }
 
     @Override

@@ -13,6 +13,12 @@ public enum ApiError {
     SYS_DATA_NULL(-8,"未找到数据"),
 
     API_PARAMS_NULL(-10000, "必要参数为空！"),
+
+	REDIS_QUERY_NULL(-12000, "Redis查询结果为空！"),
+	REDIS_INSERT_FAIL(-12010, "Redis插入失败！"),
+	REDIS_UPDATE_FAIL(-12020, "Redis更新失败！"),
+	REDIS_DELETE_FAIL(-12030, "Redis删除失败！"),
+	REDIS_EXPIRE_FAIL(-12040, "RedisTTL失败！"),
     ;
 
 	private ApiError(int code, String desc) {

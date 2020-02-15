@@ -1,12 +1,14 @@
 package kai.template.web.interceptor;
 
 import kai.template.exception.ApiError;
+import kai.template.service.primary.system.SystemService;
 import kai.template.web.annotation.NeedNotAuth;
 import kai.template.web.constants.CommonConstant;
 import kai.template.web.utils.HttpRequestUtil;
 import kai.template.web.utils.HttpResponseUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.method.HandlerMethod;
 import org.springframework.web.servlet.HandlerInterceptor;
@@ -23,6 +25,9 @@ import java.util.Optional;
  */
 public class AuthInterceptor implements HandlerInterceptor {
     private final static Logger LOGGER = LoggerFactory.getLogger(AuthInterceptor.class);
+
+    @Autowired
+    private SystemService systemService;
 
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
@@ -46,7 +51,7 @@ public class AuthInterceptor implements HandlerInterceptor {
             LOGGER.info("==========================auth interceptor pre end==========================");
             return false;
         }
-        boolean login = false;
+        boolean login = systemService.isLogin(String.valueOf(uid), String.valueOf(token));
         if (!login) {
             HttpResponseUtil.parseErrorResponse(ApiError.SYS_UNSIGNED, response);
             LOGGER.info("==========================auth interceptor pre end==========================");

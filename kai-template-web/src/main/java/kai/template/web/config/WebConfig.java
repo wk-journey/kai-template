@@ -17,7 +17,7 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 public class WebConfig implements WebMvcConfigurer {
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
-		registry.addInterceptor(new DefaultInterceptor()).addPathPatterns("/**");
+//		registry.addInterceptor(new DefaultInterceptor()).addPathPatterns("/**");
         registry.addInterceptor(new CrossInterceptor()).addPathPatterns("/**");
         registry.addInterceptor(new AuthInterceptor()).addPathPatterns("/**")
                 .excludePathPatterns("/system/login");
