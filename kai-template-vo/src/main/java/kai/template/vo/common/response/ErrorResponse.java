@@ -10,26 +10,28 @@ package kai.template.vo.common.response;
 public class ErrorResponse extends Response {
     public ErrorResponse() {
         super.setSuccess(false);
-        super.setMsg("失败");
+        super.setMessage("失败");
     }
 
-    public ErrorResponse(String msg) {
+    public ErrorResponse(String message) {
         super.setSuccess(false);
-        super.setMsg(msg);
+        super.setMessage(message);
     }
-    public ErrorResponse(Integer extCode, String msg) {
+    public ErrorResponse(int code, String message) {
         super.setSuccess(false);
-        super.setExtCode(extCode);
-        super.setMsg(msg);
+        super.setExtCode(code);
+        super.setMessage(message);
     }
 
     public static ErrorResponse newInstance(){
         return new ErrorResponse();
     }
-    public static ErrorResponse newInstance(String msg){
-        return new ErrorResponse(msg);
+
+    public static ErrorResponse newInstance(String message){
+        return new ErrorResponse(message);
     }
-    public static ErrorResponse newInstance(int extCode, String msg){
-        return new ErrorResponse(Integer.valueOf(extCode), msg);
+
+    public static ErrorResponse newInstance(int code, String message){
+        return new ErrorResponse(code, message);
     }
 }

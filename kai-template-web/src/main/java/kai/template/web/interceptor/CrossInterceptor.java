@@ -24,17 +24,17 @@ public class CrossInterceptor implements HandlerInterceptor {
     private final static List<String> CROSS_DOMAIN_ORIGINS = Lists.newArrayList();
 
     static {
-        CROSS_DOMAIN_ORIGINS.add("http://localhost:8527");
+        CROSS_DOMAIN_ORIGINS.add("http://localhost:9527");
     }
 
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
-        LOGGER.info("=========================cross interceptor start=========================");
+        LOGGER.info("=========================cross interceptor pre start=========================");
         String origin = HttpRequestUtil.getOriginFromHeader(request);
         if (StringUtils.isNotEmpty(origin)) {
             this.doCrossDomain(HttpRequestUtil.getRequestHeadersFromHeader(request), origin, response);
         }
-        LOGGER.info("=========================cross interceptor start=========================");
+        LOGGER.info("==========================cross interceptor pre end==========================");
         return true;
     }
 

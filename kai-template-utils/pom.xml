@@ -15,6 +15,7 @@
         <common-lang3.version>3.8</common-lang3.version>
         <commons-collections.version>3.2.2</commons-collections.version>
         <guava.version>21.0</guava.version>
+        <gson.version.version>21.0</gson.version.version>
         <jackson-databind.version>2.10.2</jackson-databind.version>
         <jackson-core-asl.version>1.9.13</jackson-core-asl.version>
         <jackson-mapper-asl.version>1.9.13</jackson-mapper-asl.version>
@@ -38,6 +39,12 @@
             <groupId>com.google.guava</groupId>
             <artifactId>guava</artifactId>
             <version>${guava.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.google.code.gson</groupId>
+            <artifactId>gson</artifactId>
+            <version>${gson.version}</version>
         </dependency>
 
         <dependency>

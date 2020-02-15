@@ -32,6 +32,7 @@ public class DefaultInterceptor implements HandlerInterceptor {
      */
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
+        LOGGER.info("=========================default interceptor pre start=========================");
         LOGGER.info("=========================request info start=========================");
         String uri = request.getRequestURI();
         LOGGER.info("remote is [{}]", request.getRemoteAddr());
@@ -62,6 +63,7 @@ public class DefaultInterceptor implements HandlerInterceptor {
         LOGGER.info("====================params body end=======================");
         LOGGER.info("[{}]-attr uid={},token={}", uri, request.getAttribute(CommonConstant.UID), request.getAttribute(CommonConstant.TOKEN));
         LOGGER.info("==========================request info end==========================");
+        LOGGER.info("==========================default interceptor pre end==========================");
         return true;
     }
 

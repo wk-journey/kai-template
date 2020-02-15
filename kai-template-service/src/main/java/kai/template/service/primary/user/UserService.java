@@ -14,5 +14,5 @@ public interface UserService {
      * @author Kai
      * @date 2020/2/3 6:57 下午
      */
-     UserDto selectByUserName(String userName);
+     UserDto queryByUserName(String userName);
 }

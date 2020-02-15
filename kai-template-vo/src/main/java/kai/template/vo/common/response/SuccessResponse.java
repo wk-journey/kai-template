@@ -7,27 +7,42 @@ import java.io.Serializable;
  */
 public class SuccessResponse<T extends Serializable> extends Response {
     private T data;
+
     public SuccessResponse() {
         super.setSuccess(true);
-        super.setMsg("成功");
+        super.setMessage("成功");
     }
-    public SuccessResponse(String msg){
+
+    public SuccessResponse(String message) {
         super.setSuccess(true);
-        super.setMsg(msg);
+        super.setMessage(message);
     }
-    public SuccessResponse(T data){
+
+    public SuccessResponse(T data) {
         super.setSuccess(true);
         this.data = data;
     }
 
-    public static SuccessResponse newInstance(){
+    public SuccessResponse(String message, T data) {
+        super.setSuccess(true);
+        super.setMessage(message);
+        this.data = data;
+    }
+
+    public static SuccessResponse newInstance() {
         return new SuccessResponse();
     }
-    public static SuccessResponse newInstance(String msg){
-        return new SuccessResponse(msg);
+
+    public static SuccessResponse newInstance(String message) {
+        return new SuccessResponse(message);
     }
-    public static SuccessResponse newInstance(Serializable data){
+
+    public static SuccessResponse newInstance(Serializable data) {
         return new SuccessResponse(data);
+    }
+
+    public static SuccessResponse newInstance(String message, Serializable data) {
+        return new SuccessResponse(message, data);
     }
 
     public T getData() {

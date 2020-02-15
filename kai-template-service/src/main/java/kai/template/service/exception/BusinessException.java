@@ -1,5 +1,7 @@
 package kai.template.service.exception;
 
+import kai.template.exception.ApiError;
+
 public class BusinessException extends Exception {
     private int errorCode;
     private String errorMsg;
@@ -8,6 +10,11 @@ public class BusinessException extends Exception {
         super(errorMsg);
         this.errorCode = errorCode;
         this.errorMsg = errorMsg;
+    }
+
+    public BusinessException(ApiError apiError) {
+        this.errorCode = apiError.getCode();
+        this.errorMsg = apiError.getDesc();
     }
 
     private static final long serialVersionUID = 1L;

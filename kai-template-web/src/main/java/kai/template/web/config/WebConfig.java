@@ -20,6 +20,6 @@ public class WebConfig implements WebMvcConfigurer {
 		registry.addInterceptor(new DefaultInterceptor()).addPathPatterns("/**");
         registry.addInterceptor(new CrossInterceptor()).addPathPatterns("/**");
         registry.addInterceptor(new AuthInterceptor()).addPathPatterns("/**")
-                .excludePathPatterns("/login");
+                .excludePathPatterns("/system/login");
     }
 }

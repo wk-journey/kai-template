@@ -16,7 +16,7 @@ public class UserServiceImpl implements UserService {
     private UserMapper userMapper;
 
     @Override
-    public UserDto selectByUserName(String userName) {
+    public UserDto queryByUserName(String userName) {
         try {
             UserEntity userEntity = userMapper.selectByUserName(userName);
             UserDto userDto = new UserDto();
