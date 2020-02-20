@@ -5,8 +5,8 @@ import java.io.Serializable;
 /**
  * success response
  */
-public class SuccessResponse<T extends Serializable> extends Response {
-    private T data;
+public class SuccessResponse extends Response {
+    private Object data;
 
     public SuccessResponse() {
         super.setSuccess(true);
@@ -18,12 +18,12 @@ public class SuccessResponse<T extends Serializable> extends Response {
         super.setMessage(message);
     }
 
-    public SuccessResponse(T data) {
+    public SuccessResponse(Object data) {
         super.setSuccess(true);
         this.data = data;
     }
 
-    public SuccessResponse(String message, T data) {
+    public SuccessResponse(String message, Object data) {
         super.setSuccess(true);
         super.setMessage(message);
         this.data = data;
@@ -37,19 +37,15 @@ public class SuccessResponse<T extends Serializable> extends Response {
         return new SuccessResponse(message);
     }
 
-    public static SuccessResponse newInstance(Serializable data) {
+    public static SuccessResponse newInstance(Object data) {
         return new SuccessResponse(data);
     }
 
-    public static SuccessResponse newInstance(String message, Serializable data) {
-        return new SuccessResponse(message, data);
-    }
-
-    public T getData() {
+    public Object getData() {
         return data;
     }
 
-    public void setData(T data) {
+    public void setData(Object data) {
         this.data = data;
     }
 }

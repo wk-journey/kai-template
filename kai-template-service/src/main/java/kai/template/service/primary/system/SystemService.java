@@ -1,6 +1,7 @@
 package kai.template.service.primary.system;
 
 import kai.template.service.exception.BusinessException;
+import kai.template.vo.system.SystemLoginResultVo;
 
 /**
  * 系统Service
@@ -20,7 +21,7 @@ public interface SystemService {
      * @author Kai
      * @date 2020/2/14 10:31 下午
      */
-     String login(String userName, String password);
+    SystemLoginResultVo login(String userName, String password) throws BusinessException;
 
     /**
      * 用户是否正常登录
@@ -32,15 +33,15 @@ public interface SystemService {
      * @author Kai
      * @date 2020/2/14 10:29 下午
      */
-     boolean isLogin(String uid, String token);
+     Boolean isLogin(Long uid, String token);
 
-     String generateToken(String uid);
+     String generateToken(Long uid);
 
-     boolean checkUserToken(String uid, String token) throws BusinessException;
+     boolean checkUserToken(Long uid, String token) throws BusinessException;
 
-     boolean refreshTokenExpire(String uid) throws BusinessException;
+     boolean refreshTokenExpire(Long uid) throws BusinessException;
 
-     boolean disableToken(String uid);
+     boolean disableToken(Long uid);
 
-     String getToken(String uid);
+     String getToken(Long uid);
 }

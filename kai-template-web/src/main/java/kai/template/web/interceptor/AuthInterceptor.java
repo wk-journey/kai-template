@@ -46,18 +46,27 @@ public class AuthInterceptor implements HandlerInterceptor {
 
         Object uid = HttpRequestUtil.getParamFromAttribute(request, CommonConstant.UID);
         Object token = HttpRequestUtil.getParamFromAttribute(request, CommonConstant.TOKEN);
+        // uid和token空值校验
         if (!Optional.ofNullable(uid).isPresent() || !Optional.ofNullable(token).isPresent()) {
             HttpResponseUtil.parseErrorResponse(ApiError.SYS_UNSIGNED, response);
             LOGGER.info("==========================auth interceptor pre end==========================");
             return false;
         }
-        boolean login = systemService.isLogin(String.valueOf(uid), String.valueOf(token));
-        if (!login) {
+        // 是否已经登录
+        Boolean login = systemService.isLogin(Long.parseLong(uid.toString()), String.valueOf(token));
+        if (!Optional.ofNullable(login).isPresent()) {
             HttpResponseUtil.parseErrorResponse(ApiError.SYS_UNSIGNED, response);
             LOGGER.info("==========================auth interceptor pre end==========================");
             return false;
         }
+        // 单点登录校验
+        if (!login) {
+            HttpResponseUtil.parseErrorResponse(ApiError.SYS_REPEAT_LOGIN, response);
+            LOGGER.info("==========================auth interceptor pre end==========================");
+            return false;
+        }
+        // 登录成功
         LOGGER.info("==========================auth interceptor pre end==========================");
-        return false;
+        return true;
     }
 }

@@ -13,6 +13,7 @@ public class BusinessException extends Exception {
     }
 
     public BusinessException(ApiError apiError) {
+        super(apiError.getDesc());
         this.errorCode = apiError.getCode();
         this.errorMsg = apiError.getDesc();
     }

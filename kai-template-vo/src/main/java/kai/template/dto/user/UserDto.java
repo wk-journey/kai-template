@@ -3,12 +3,29 @@ package kai.template.dto.user;
 import java.util.Date;
 
 public class UserDto {
+    private Long id;
     private Long userId;
     private String userName;
-    private Integer userAge;
-    private String userAddress;
+    private String password;
+    private String nickName;
+    private String avatar;
+    private Integer roleId;
+    private Integer orgId;
+    private Short delFlag;
+    private Integer version;
     private Date createdTime;
     private Date updatedTime;
+
+    public UserDto() {
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
 
     public Long getUserId() {
         return userId;
@@ -26,20 +43,60 @@ public class UserDto {
         this.userName = userName;
     }
 
-    public Integer getUserAge() {
-        return userAge;
+    public String getPassword() {
+        return password;
     }
 
-    public void setUserAge(Integer userAge) {
-        this.userAge = userAge;
+    public void setPassword(String password) {
+        this.password = password;
     }
 
-    public String getUserAddress() {
-        return userAddress;
+    public String getNickName() {
+        return nickName;
     }
 
-    public void setUserAddress(String userAddress) {
-        this.userAddress = userAddress;
+    public void setNickName(String nickName) {
+        this.nickName = nickName;
+    }
+
+    public String getAvatar() {
+        return avatar;
+    }
+
+    public void setAvatar(String avatar) {
+        this.avatar = avatar;
+    }
+
+    public Integer getRoleId() {
+        return roleId;
+    }
+
+    public void setRoleId(Integer roleId) {
+        this.roleId = roleId;
+    }
+
+    public Integer getOrgId() {
+        return orgId;
+    }
+
+    public void setOrgId(Integer orgId) {
+        this.orgId = orgId;
+    }
+
+    public Short getDelFlag() {
+        return delFlag;
+    }
+
+    public void setDelFlag(Short delFlag) {
+        this.delFlag = delFlag;
+    }
+
+    public Integer getVersion() {
+        return version;
+    }
+
+    public void setVersion(Integer version) {
+        this.version = version;
     }
 
     public Date getCreatedTime() {

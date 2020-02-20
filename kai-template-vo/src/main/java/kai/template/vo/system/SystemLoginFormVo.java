@@ -6,7 +6,7 @@ package kai.template.vo.system;
  * @author wangkai
  * @date 2020/2/15 2:47 下午
  */
-public class SystemLoginForm {
+public class SystemLoginFormVo {
     private String userName;
     private String password;
 
@@ -26,6 +26,6 @@ public class SystemLoginForm {
         this.password = password;
     }
 
-    public SystemLoginForm() {
+    public SystemLoginFormVo() {
     }
 }
