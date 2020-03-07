@@ -2,6 +2,7 @@ package kai.template.web.interceptor;
 
 import kai.template.exception.ApiError;
 import kai.template.service.primary.system.SystemService;
+import kai.template.utils.exception.StackTraceLogUtil;
 import kai.template.web.annotation.NeedNotAuth;
 import kai.template.web.constants.CommonConstant;
 import kai.template.web.utils.HttpRequestUtil;
@@ -34,12 +35,14 @@ public class AuthInterceptor implements HandlerInterceptor {
         LOGGER.info("=========================auth interceptor pre start=========================");
         // @NeedNotAuth注解的Controller可无需登录直接访问
         if (handler instanceof HandlerMethod && (null != ((HandlerMethod) handler).getMethodAnnotation(NeedNotAuth.class))) {
+            LOGGER.warn("==========================@NeedNotAuth==========================");
             LOGGER.info("==========================auth interceptor pre end==========================");
             return true;
         }
 
         // option请求直接通过
         if (request.getMethod().equals(RequestMethod.OPTIONS.name())) {
+            LOGGER.warn("==========================option request==========================");
             LOGGER.info("==========================auth interceptor pre end==========================");
             return true;
         }
@@ -49,6 +52,7 @@ public class AuthInterceptor implements HandlerInterceptor {
         // uid和token空值校验
         if (!Optional.ofNullable(uid).isPresent() || !Optional.ofNullable(token).isPresent()) {
             HttpResponseUtil.parseErrorResponse(ApiError.SYS_UNSIGNED, response);
+            LOGGER.error("==========================uid or token is null!==========================");
             LOGGER.info("==========================auth interceptor pre end==========================");
             return false;
         }
@@ -56,16 +60,21 @@ public class AuthInterceptor implements HandlerInterceptor {
         Boolean login = systemService.isLogin(Long.parseLong(uid.toString()), String.valueOf(token));
         if (!Optional.ofNullable(login).isPresent()) {
             HttpResponseUtil.parseErrorResponse(ApiError.SYS_UNSIGNED, response);
+            LOGGER.error("==========================uid={}, token={} user not login!==========================",
+                    uid, token);
             LOGGER.info("==========================auth interceptor pre end==========================");
             return false;
         }
         // 单点登录校验
         if (!login) {
             HttpResponseUtil.parseErrorResponse(ApiError.SYS_REPEAT_LOGIN, response);
+            LOGGER.error("==========================uid={}, token={} user repeat login!==========================",
+                    uid, token);
             LOGGER.info("==========================auth interceptor pre end==========================");
             return false;
         }
         // 登录成功
+        LOGGER.info("==========================~login success~==========================");
         LOGGER.info("==========================auth interceptor pre end==========================");
         return true;
     }

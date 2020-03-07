@@ -25,7 +25,7 @@ public class UserController extends BaseController {
     @Autowired
     private UserService userService;
 
-    @RequestMapping("queryByUid")
+    @RequestMapping("getUserInfo")
     public Object queryUserInfoByUid(HttpServletRequest request) {
         try {
             Long uid = super.getUidFromRequest(request);

@@ -4,12 +4,12 @@
     <select id="selectByUserId" parameterType="Long"
             resultType="kai.template.persist.entity.user.UserEntity">
         select user_id, user_name, password, nick_name, avatar, role_id, org_id
-        from t_user where user_name = #{userId} AND del_flag = 0
+        from t_user where user_id = #{userId} AND del_flag = 0
     </select>
 
     <select id="selectByUserName" parameterType="String"
             resultType="kai.template.persist.entity.user.UserEntity">
         select user_id, user_name, password, nick_name, avatar, role_id, org_id
-        from t_user where user_name = #{userName}
+        from t_user where user_name = #{userName} AND del_flag = 0
     </select>
 </mapper>
